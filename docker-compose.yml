@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+    node-api:
+        image: "node:12.3-alpine"
+        ports: 
+        - "3000:3000"
+        volumes:
+        - .:/code
+        working_dir: /code
+        command: ["npm", "run", "dev"]
+    mongo:
+        image: mongo
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: root
